@@ -14,7 +14,7 @@ package-lock.json
 /.next/
 /out/
 
-# production
+# productiongit rm -r --cached .
 /build
 
 # misc
