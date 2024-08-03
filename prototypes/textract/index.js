@@ -2,17 +2,18 @@
 import { AnalyzeDocumentCommand } from  "@aws-sdk/client-textract";
 import  { TextractClient } from "@aws-sdk/client-textract";
 import {fromIni} from '@aws-sdk/credential-providers';
+import 'dotenv/config'
 
 // Set the AWS Region.
-const REGION = "us-east-1"; //e.g. "us-east-1"
-const profileName = "personal";
+const REGION = process.env.REGION; //e.g. "us-east-1"
+const profileName = process.env.PROFILE_NAME;
 
 // Create SNS service object.
 const textractClient = new TextractClient({region: REGION, 
   credentials: fromIni({profile: profileName,}), 
 });
 
-const bucket = 'ambiancedhackthe6ix'
+const bucket = process.env.BUCKET_NAME
 const photo = 'textbook.png'
 
 // Set params
