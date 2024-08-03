@@ -2,17 +2,18 @@
 import { AnalyzeDocumentCommand } from  "@aws-sdk/client-textract";
 import  { TextractClient } from "@aws-sdk/client-textract";
 import {fromIni} from '@aws-sdk/credential-providers';
+import 'dotenv/config'
 
 // Set the AWS Region.
-const REGION = "us-east-1"; //e.g. "us-east-1"
-const profileName = "personal";
+const REGION = process.env.REGION; //e.g. "us-east-1"
+const profileName = process.env.PROFILE_NAME;
 
 // Create SNS service object.
 const textractClient = new TextractClient({region: REGION, 
   credentials: fromIni({profile: profileName,}), 
 });
 
-const bucket = 'ambiancedhackthe6ix'
+const bucket = process.env.BUCKET_NAME
 const photo = 'textbook.png'
 
 // Set params
@@ -27,33 +28,16 @@ const params = {
   }
 
 const displayBlockInfo = async (response) => {
+  let textBlock = [];
+  let textString = "";
     try {
         response.Blocks.forEach(block => {
-            console.log(`ID: ${block.Id}`)
-            console.log(`Block Type: ${block.BlockType}`)
             if ("Text" in block && block.Text !== undefined){
-                console.log(`Text: ${block.Text}`)
+                textBlock.push(block.Text)
             }
-            else{}
-            if ("Confidence" in block && block.Confidence !== undefined){
-                console.log(`Confidence: ${block.Confidence}`)
-            }
-            else{}
-            if (block.BlockType == 'CELL'){
-                console.log("Cell info:")
-                console.log(`   Column Index - ${block.ColumnIndex}`)
-                console.log(`   Row - ${block.RowIndex}`)
-                console.log(`   Column Span - ${block.ColumnSpan}`)
-                console.log(`   Row Span - ${block.RowSpan}`)
-            }
-            if ("Relationships" in block && block.Relationships !== undefined){
-                console.log(block.Relationships)
-                console.log("Geometry:")
-                console.log(`   Bounding Box - ${JSON.stringify(block.Geometry.BoundingBox)}`)
-                console.log(`   Polygon - ${JSON.stringify(block.Geometry.Polygon)}`)
-            }
-            console.log("-----")
         });
+        textString = textBlock.join(" ");
+        console.log(textString);
       } catch (err) {
         console.log("Error", err);
       }
