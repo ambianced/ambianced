@@ -18,8 +18,8 @@ import { Button, buttonVariants } from "./ui/button";
 import { ModeToggle } from "./ui/mode-toggle";
 import Link from "next/link";
 
-import { Session } from "next-auth";
 import UserDropdown from "./UserDropdown";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface RouteProps {
   href: string;
@@ -37,13 +37,9 @@ const routeList: RouteProps[] = [
   },
 ];
 
-export default function Topbar({
-  session,
-}: Readonly<{
-  session: Session | null;
-}>) {
+export default function Topbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const user = session?.user;
+  const { user, error, isLoading } = useUser();
 
   return (
     <header className="fixed border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
