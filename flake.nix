@@ -16,6 +16,7 @@
           packages = with pkgs; [
             python312
             nodejs_22
+            corepack_22
           ];
         };
       });
