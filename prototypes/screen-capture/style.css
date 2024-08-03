@@ -1,0 +1,13 @@
+#video {
+  border: 1px solid #999;
+  width: 98%;
+  max-width: 860px;
+}
+
+#log {
+  width: 25rem;
+  height: 15rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+  overflow: scroll;
+}
