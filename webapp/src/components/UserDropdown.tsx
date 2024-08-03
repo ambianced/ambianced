@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "./ui/badge";
 import {
   DropdownMenu,
@@ -37,10 +37,12 @@ export default function UserDropdown({
             {/* {session.data && <p className="font-medium">{JSON.stringify(session.data.user)}</p>} */}
             <p className="font-medium">{user.name}</p>
             {/* {user.id} */}
-
-            <div> <Badge>
-              {user.role ?? capitalize(user.role ?? "")}</Badge>
-            </div>
+{/* 
+            <div>
+              <Badge>
+                {user.role ?? capitalize(user.role ?? "")}
+              </Badge>
+            </div> */}
 
             <p className="w-[200px] truncate text-sm text-muted-foreground">
               {user.email}
