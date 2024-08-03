@@ -1,0 +1,26 @@
+{
+  "name": "image-generation",
+  "version": "1.0.0",
+  "description": "Prototype for generating images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambianced/ambianced.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambianced/ambianced/issues"
+  },
+  "homepage": "https://github.com/ambianced/ambianced#readme",
+  "dependencies": {
+    "@types/node": "^22.1.0",
+    "dotenv": "^16.4.5",
+    "openai": "^4.54.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
