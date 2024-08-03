@@ -3,6 +3,7 @@ import { TailwindIndicator } from "@/components/ui/tailwind-indicator";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +21,7 @@ export default async function RootLayout({
   // const session = await auth();
   return (
       <html lang="en">
+        <UserProvider>
         <body className={`max-h-screen ${inter.className}`}>
           <ThemeProvider
             attribute="class"
@@ -31,6 +33,7 @@ export default async function RootLayout({
             <TailwindIndicator />
           </ThemeProvider>
         </body>
+        </UserProvider>
       </html>
   );
 }
