@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Badge } from "./ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { UserAvatar } from "./ui/user-avatar";
-import { capitalize } from "@/lib/utils";
+// import { capitalize } from "@/lib/utils";
 import { UserProfile } from "@auth0/nextjs-auth0/client";
 
 export default function UserDropdown({
