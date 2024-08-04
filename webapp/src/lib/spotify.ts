@@ -2,17 +2,10 @@
 import { playing_schema } from "@/schemas/spotify";
 import { token_schema } from "@/schemas/spotify";
 
-const refresh_token = "AQD14wrEBSUuwrO8CDos88dOw7ZNakQm3UVv3TIOz-ry6vME42EMI2RR6KpF2C4xnEwayIBJAndG5WyRwmvIB6v9QJDHq6BN6jWLQIo2YsKwMioFfwptLRiEZnSEjanw7X8"
+//TODO: Dynamically fetch the refresh token from the database
+const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-
-const getRefreshToken = async () => {
-  // call /api/spotify/login
-  const response = await fetch("/api/spotify/login");
-  const res_data = await response.json();
-  console.log(res_data)
-
-}
 
 
 export const getAccessToken = async () => {
