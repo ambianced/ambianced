@@ -28,6 +28,7 @@ export class Capture {
   }
 
   async stop() {
+
     clearInterval(this.intervalHandle);
     this.intervalHandle = undefined;
     this.capturer = undefined;

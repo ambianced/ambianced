@@ -67,8 +67,8 @@ export default function Topbar() {
                 
                   {user ? (
                     <div className="flex gap-4 items-center">
-                      <p className="text-muted-foreground">
-                        Hello, {user.name}
+                      <p className="text-zinc-700">
+                      <span className="text-white"> Hello, {user.name}</span> 
                       </p>
                       <UserDropdown {...{ user }} />
                     </div>
@@ -96,7 +96,7 @@ export default function Topbar() {
             {/* TODO: Implement Sign In Button */}
             {user ? (
               <div className="flex gap-4 items-center">
-                <p className="text-muted-foreground">Hello, {user.name}</p>
+                <p className="text-white">Hello, {user.name}</p>
                 <UserDropdown {...{ user }} />
               </div>
             ) : (

@@ -1,9 +1,9 @@
 
 import { bookThemesAndSong } from '@/lib/const';
 import { getAccessToken, getPlayback } from "@/lib/spotify";
+import { Spotify } from "react-spotify-embed";
 import { Integration, IntegrationContext } from './framework';
 
-import { url } from 'inspector';
 
 
 export class SpotifyIntegration implements Integration {
@@ -15,23 +15,19 @@ export class SpotifyIntegration implements Integration {
       'Select the theme that best matches the mood and environment of the passage.',
       bookThemesAndSong.map((theme) => theme[0])
     )
-    console.log("THEME", theme)
+    
     const songId = bookThemesAndSong.find((themeAndSong) => themeAndSong[0] === theme)?.[1];
     if (!songId) {
-      throw Error('no song found for theme');
+      return null;
     }
 
     const token = await getAccessToken();
     if (!token) {
-      return;
+      return null;
     }
 
-    // Generate a random number between 0 and the length of bookThemesAndSongs - 1
-
-
     try {
-      const data1 = await getPlayback(token, songId, 0);
-      console.log(data1)
+      const data = await getPlayback(token, songId, 0);
     } catch (error) {
       console.error('Error during playback:', error);
     }
@@ -39,7 +35,7 @@ export class SpotifyIntegration implements Integration {
     // play the song
     // create the cardx 
     // TODO: return a card for the image
-    return<div>{theme}</div>
+    return        <Spotify className='w-full' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
   }
 }
 
