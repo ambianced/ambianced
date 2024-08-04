@@ -24,6 +24,7 @@ export class Capture {
       throw Error('expected exactly one video track in stream');
     }
     this.capturer = new ImageCapture(track);
+    await this.capture();
     this.intervalHandle = setInterval(async () => await this.capture(), this.delay);
   }
 

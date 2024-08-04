@@ -5,7 +5,6 @@ import { Spotify } from "react-spotify-embed";
 import { Integration, IntegrationContext } from './framework';
 
 
-
 export class SpotifyIntegration implements Integration {
 
   async update(context: IntegrationContext) {
@@ -27,15 +26,12 @@ export class SpotifyIntegration implements Integration {
     }
 
     try {
-      const data = await getPlayback(token, songId, 0);
+      await getPlayback(token, songId, 0);
     } catch (error) {
       console.error('Error during playback:', error);
     }
-    // make sure you have the access token
-    // play the song
-    // create the cardx 
-    // TODO: return a card for the image
-    return        <Spotify className='w-full' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
+
+    return <Spotify className='w-full' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
   }
 }
 
