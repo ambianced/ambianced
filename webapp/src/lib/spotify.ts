@@ -69,46 +69,46 @@ export const getCurrentlyPlayingFetcher = async (token: string) => {
   return playing_data;
 };
 
-export const getPlayback = async (token: string) => {
+// export const getPlayback = async (token: string) => {
 
-  const playingOptions = {
-    url: "https://api.spotify.com/v1/me/player/play",
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-    "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-    "offset": {
-        "position": 5
-    },
-    "position_ms": 0
-  };
-  const response = await fetch(playingOptions.url, {
-    method: "put",
-    headers: playingOptions.headers,
-    next: { revalidate: 30 },
-    body: JSON.stringify({
-      "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-      "offset": {
-          "position": 5
-      },
-      "position_ms": 0
-    }),
-  });
+//   const playingOptions = {
+//     url: "https://api.spotify.com/v1/me/player/play",
+//     headers: {
+//       Authorization: "Bearer " + token,
+//     },
+//     "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+//     "offset": {
+//         "position": 5
+//     },
+//     "position_ms": 0
+//   };
+//   const response = await fetch(playingOptions.url, {
+//     method: "put",
+//     headers: playingOptions.headers,
+//     next: { revalidate: 30 },
+//     body: JSON.stringify({
+//       "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+//       "offset": {
+//           "position": 5
+//       },
+//       "position_ms": 0
+//     }),
+//   });
 
-  // if (response.status !== 200) {
-  //   return response.status;
-  // }
+//   // if (response.status !== 200) {
+//   //   return response.status;
+//   // }
 
-  let playing_data = null;
-  const res_data = await response.json();
-  // playing_data = playing_schema.parse(res_data);
-
-
-  return res_data;
-};
+//   let playing_data = null;
+//   const res_data = await response.json();
+//   // playing_data = playing_schema.parse(res_data);
 
 
-export const  getPlayback1 = async (token: string, track: string, songPosition: number) => {
+//   return res_data;
+// };
+
+
+export const getPlayback = async (token: string, track: string, songPosition: number) => {
   const playingOptions = {
     url: "https://api.spotify.com/v1/me/player/play",
     headers: {
