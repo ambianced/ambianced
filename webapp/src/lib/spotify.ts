@@ -34,6 +34,10 @@ export const getAccessToken = async () => {
     // next: { revalidate: 3600, tags: [TOKEN_CACHE_TAG] },
   });
   const res_data = await response.json();
+  // handle if the res_data is not a valid json
+  if (res_data.error) {
+    return null;
+  }
   const token_data = token_schema.parse(res_data);
 
   return token_data.access_token;
@@ -100,5 +104,59 @@ export const getPlayback = async (token: string) => {
   // playing_data = playing_schema.parse(res_data);
 
 
+  return res_data;
+};
+
+
+export const getPlayback1 = async (token: string, albumId: string, songPosition: number) => {
+  const playingOptions = {
+    url: "https://api.spotify.com/v1/me/player/play",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+
+  const album = "spotify:album" + albumId;
+
+  // Log if these two JSON strings are the same
+  console.log(JSON.stringify({
+    "context_uri": albumId,
+    "offset": {
+        "position": songPosition
+    },
+    "position_ms": 0
+  }) === JSON.stringify({
+    "context_uri": "spotify:album:0j4PaZDmzAJ4PlS89zcHbW?si=LKXoH9obS7adnmGgc9yrBw",
+ "offset": {
+     "position": 0
+ },
+ "position_ms": 0
+ }),);
+
+ const track = "4iV5W9uYEdYUVa79Axb7Rh"
+
+  const response = await fetch(playingOptions.url, {
+    method: "put",
+    headers: playingOptions.headers,
+    next: { revalidate: 30 },
+    body: JSON.stringify({
+      "uris": [`spotify:track:${track}`],
+      "position_ms": 0
+    }),
+    // body: JSON.stringify({
+    //    "context_uri": "spotify:album:0j4PaZDmzAJ4PlS89zcHbW?si=LKXoH9obS7adnmGgc9yrBw",
+    // "offset": {
+    //     "position": 0
+    // },
+    // "position_ms": 0
+    // }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+  console.log("RESPONSE, ", response)
+
+  const res_data = await response.json();
   return res_data;
 };
