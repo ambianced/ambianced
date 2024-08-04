@@ -41,7 +41,7 @@ export const IntegrationCard = ({ logo, name, description, enabled  }: Integrati
 
       {/* Add a swithcer */}
       <div className="h-full flex flex-col justify-center items-center w-1/2">
-        <Switch disabled={!enabled} checked/>
+        <Switch disabled checked={!enabled}/>
       </div>
     </Card>
   );
