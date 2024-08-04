@@ -6,6 +6,7 @@ import { TextractClient } from "@aws-sdk/client-textract";
 import { TextractOcr } from "@/core/ocr";
 import { Integration, OpenAiCompleter, OpenAiOptionSelector } from "./integrations/framework";
 import { DallE3Integration } from './integrations/art.tsx';
+import { SpotifyIntegration } from './integrations/music.tsx';
 
 
 export async function imageToText(formData: FormData) {
@@ -28,7 +29,7 @@ export async function imageToText(formData: FormData) {
 }
 
 
-export type IntegrationType = 'art';
+export type IntegrationType = 'art' | 'music';
 
 
 export async function update(passage: string, integrationType: IntegrationType) {
@@ -45,6 +46,9 @@ export async function update(passage: string, integrationType: IntegrationType) 
   let integration: Integration;
   if (integrationType == 'art') {
     integration = new DallE3Integration(openAiClient, artSummaryPrompt);
+  }
+  else if (integrationType == 'music') {
+    integration = new SpotifyIntegration();
   } else {
     throw Error('unrecognized integration type found');
   }

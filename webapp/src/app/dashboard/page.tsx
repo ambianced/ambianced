@@ -1,14 +1,13 @@
 "use client";
 
-import { useState } from 'react';
+import { imageToText, IntegrationType, update } from "@/actions";
 import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
-import { BookOpen } from "lucide-react";
-import { getAccessToken, getPlayback, getPlayback1 } from "@/lib/spotify";
 import { Capture } from "@/core/capture";
-import { imageToText, update, IntegrationType } from "@/actions";
+import { getAccessToken, getPlayback } from "@/lib/spotify";
+import { BookOpen } from "lucide-react";
+import { useState } from 'react';
 
-import { IntegrationCard } from "@/components/integration-card";
 import { bookThemesAndSong } from "@/lib/const";
 
 const dummyData = [
@@ -46,7 +45,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append("blob", new Blob([buffer]))
       const passage = await imageToText(formData);
-      setNodes(await Promise.all(['art'].flatMap((t) => update(passage, t as IntegrationType))));
+      setNodes(await Promise.all(['art','music'].flatMap((t) => update(passage, t as IntegrationType))));
     }
   );
 
@@ -57,16 +56,6 @@ export default function Home() {
       return;
     }
 
-    // Generate a random number between 0 and the length of bookThemesAndSongs - 1
-    const randomIndex = Math.floor(Math.random() * bookThemesAndSong.length);
-    const [theme, songUri] = bookThemesAndSong[randomIndex];
-
-
-    try {
-      const data1 = await getPlayback1(token, songUri, 0);
-    } catch (error) {
-      console.error('Error during playback:', error);
-    }
   };
 
   return (
