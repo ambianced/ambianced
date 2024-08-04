@@ -1,12 +1,23 @@
 import { playing_schema } from "@/schemas/spotify";
 import { token_schema } from "@/schemas/spotify";
 
-const refresh_token = "BQDbcOngFYkJ7bmrjVEXHchFOwCja1Uns_TqG8BKDaYqUTXcVoQTS_gHz0JWVqCdzdL7EtLFfpvDQ-wqMN9jjz2JSl5C4PDV2zSO0EIooHYnApC_tuYV033gJRnPOd5SR5baaX0otAUR8X4el-n0PrHeiHIbmY3b7XeW9NaTEG8j_fV1NkMhKFMO47ywckTyeii4"
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = "AQBzjNGxQaJWm4VvkLzTfKOaoCZCj5SJsbJ0Zz-hjxslnP4q3BTsSwuKMhNRC603nRvV5BdLF2qiHh1djeD03Da6I0dson5oAP0o5PKaxGJD72DK5fUo9JQBJtgpA-U6qOA"
+const client_id = "5ce5ca171e0643f59949b9061943bd1e"
+const client_secret ="3326ddb36e54439a805c377b31fd17f2"
 
-export const getAccessToken = async () => {
+const getRefreshToken = async () => {
+  // call /api/spotify/login
+  const response = await fetch("/api/spotify/login");
+  const res_data = await response.json();
+  console.log(res_data)
+
+}
+
+
+export  const getAccessToken = async () => {
+  console.log("GET ACCESS TOKEN")
   if (!(refresh_token && client_secret && client_id)) {
+    console.log("NO REFRESH")
     return null;
   }
   const authOptions = {
@@ -28,16 +39,19 @@ export const getAccessToken = async () => {
     method: "post",
     body: new URLSearchParams(authOptions.form),
     headers: authOptions.headers,
-    next: { revalidate: 3600, tags: [TOKEN_CACHE_TAG] },
+    // next: { revalidate: 3600, tags: [TOKEN_CACHE_TAG] },
   });
   const res_data = await response.json();
   const token_data = token_schema.parse(res_data);
+
+  console.log("TOKEN DATA")
 
   return token_data.access_token;
 };
 
 
 export const getCurrentlyPlayingFetcher = async (token: string) => {
+
   const playingOptions = {
     url: "https://api.spotify.com/v1/me/player/currently-playing",
     headers: {
@@ -50,6 +64,7 @@ export const getCurrentlyPlayingFetcher = async (token: string) => {
     next: { revalidate: 30 },
   });
 
+  console.log("REARKDLSAJFLKDSAJFKLDASJFKSDAJ ")
   if (response.status !== 200) {
     return response.status;
   }
