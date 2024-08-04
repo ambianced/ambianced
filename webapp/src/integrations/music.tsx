@@ -2,6 +2,7 @@
 import { bookThemesAndSong } from '@/lib/const';
 import { getAccessToken, getPlayback } from "@/lib/spotify";
 import { Integration, IntegrationContext } from './framework';
+import {Spotify} from "react-spotify-embed";   
 
 import { url } from 'inspector';
 
@@ -39,7 +40,7 @@ export class SpotifyIntegration implements Integration {
     // play the song
     // create the cardx 
     // TODO: return a card for the image
-    return<div>{theme}</div>
+    return        <Spotify wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
   }
 }
 

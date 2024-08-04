@@ -45,7 +45,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append("blob", new Blob([buffer]))
       const passage = await imageToText(formData);
-      setNodes(await Promise.all(['art','music'].flatMap((t) => update(passage, t as IntegrationType))));
+      setNodes(await Promise.all(['music'].flatMap((t) => update(passage, t as IntegrationType))));
     }
   );
 
@@ -74,6 +74,8 @@ export default function Home() {
         <div>
           {nodes}
         </div>
+        ciao
+
       </section>
     </>
   );
