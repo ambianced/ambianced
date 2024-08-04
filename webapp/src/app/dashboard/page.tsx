@@ -4,11 +4,10 @@ import { imageToText, IntegrationType, update } from "@/actions";
 import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
 import { Capture } from "@/core/capture";
-import { getAccessToken, getPlayback } from "@/lib/spotify";
+import { getAccessToken } from "@/lib/spotify";
 import { BookOpen } from "lucide-react";
 import { useState } from 'react';
 
-import { bookThemesAndSong } from "@/lib/const";
 
 const dummyData = [
   {
