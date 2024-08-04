@@ -71,7 +71,7 @@ export default function Home() {
         <div className="w-full justify-center flex">
           <Button className="md:w-1/3" onClick={handleClick}>Get Started</Button>
         </div>
-        <div>
+        <div className="w-full flex justify-center">
           {nodes}
         </div>
       </section>
