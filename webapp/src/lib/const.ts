@@ -5,10 +5,10 @@ export const bookThemesAndSong = [
   ['Night Camping', '2rNS7Qz3Rstipkl10wBgGL'],
   ['Battle', '6tRXfCfNdcAMICHdQerIuu'],
   ['Romantic', '51v7yO07BdGgP6hv0OaDe2'],
-  ['Bard', '3xtiXNDbSKxy20I7D6vFUg'],
+  ['Bard', '7fP8kFJYWuNFxe5I7QDGhK'],
   ['Fairy Fantasy', '5nkfgvzqER7anZYB2oetjA'],
   ['Victorian Ballroom', '4pSC3MVD8jWH37S2L2oGBt'],
   ['Sad/Nostalgic/Quiet', '4xF4ZBGPZKxECeDFrqSAG4'],
-  ['Urban/City', '0VjIjW4GlUZAMYd2vXMi3b'],
+  ['Urban/City', '5Dpv2wpLQVgNtaiPE32vWB'],
   ['Winter', '4NWikDGOQ7InojRHxdyPqN']
 ]
