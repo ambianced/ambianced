@@ -23,7 +23,7 @@ export class SpotifyIntegration implements Integration {
 
     const token = await getAccessToken();
     if (!token) {
-      return;
+      return null;
     }
 
     try {
