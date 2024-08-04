@@ -33,7 +33,7 @@ export default function Topbar() {
   const { user, error, isLoading } = useUser();
 
   return (
-    <header className="fixed border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="fixed border-b-[1px] top-0 z-40 w-full bg-[#a8c3a2] dark:bg-[#2f4f2f]">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
