@@ -47,7 +47,7 @@ export async function update(passage: string, integrationType: IntegrationType) 
   if (integrationType == 'art') {
     integration = new DallE3Integration(openAiClient, artSummaryPrompt);
   }
-  if (integrationType == 'music') {
+  else if (integrationType == 'music') {
     integration = new SpotifyIntegration();
   } else {
     throw Error('unrecognized integration type found');

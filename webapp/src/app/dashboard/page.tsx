@@ -56,16 +56,6 @@ export default function Home() {
       return;
     }
 
-    // Generate a random number between 0 and the length of bookThemesAndSongs - 1
-    const randomIndex = Math.floor(Math.random() * bookThemesAndSong.length);
-    const [theme, songUri] = bookThemesAndSong[randomIndex];
-
-
-    try {
-      const data1 = await getPlayback(token, songUri, 0);
-    } catch (error) {
-      console.error('Error during playback:', error);
-    }
   };
 
   return (
