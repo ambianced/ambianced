@@ -28,7 +28,7 @@ export async function imageToText(formData: FormData) {
 }
 
 
-type IntegrationType = 'art';
+export type IntegrationType = 'art';
 
 
 export async function update(passage: string, integrationType: IntegrationType) {

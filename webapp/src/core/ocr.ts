@@ -1,4 +1,4 @@
-import { TextractClient, AnalyzeDocumentCommand } from '@aws-sdk/client-textract';
+import { TextractClient, AnalyzeDocumentCommand, FeatureType } from '@aws-sdk/client-textract';
 
 
 export interface Ocr {
@@ -18,7 +18,7 @@ export class TextractOcr {
       Document: {
         Bytes: image,
       },
-      FeatureTypes: ['TABLES', 'FORMS', 'SIGNATURES'],
+      FeatureTypes: ['TABLES', 'FORMS', 'SIGNATURES'] as FeatureType[],
     };
     const command = new AnalyzeDocumentCommand(params);
     const response = await this.client.send(command);

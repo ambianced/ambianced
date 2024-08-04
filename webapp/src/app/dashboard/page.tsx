@@ -6,19 +6,21 @@ import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import { getAccessToken, getPlayback } from "@/lib/spotify";
 import { Capture } from "@/core/capture";
-import { imageToText, update } from "@/actions";
+import { imageToText, update, IntegrationType } from "@/actions";
 
 
-export default function Home({ delay = 5000 }: { delay: number }) {
-  const [nodes, setNodes] = useState([]);
+export default function Home() {
+  const interval = 5000;
+
+  const [nodes, setNodes] = useState<React.ReactNode>([]);
 
   const capture = new Capture(
-    delay,
+    interval,
     async (buffer) => {
       const formData = new FormData();
       formData.append("blob", new Blob([buffer]))
       const passage = await imageToText(formData);
-      setNodes(await Promise.all(['art'].flatMap((t) => update(passage, t))));
+      setNodes(await Promise.all(['art'].flatMap((t) => update(passage, t as IntegrationType))));
     }
   );
 

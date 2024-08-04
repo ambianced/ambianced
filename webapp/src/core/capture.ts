@@ -49,7 +49,7 @@ export class Capture {
     }
     ctx.transferFromImageBitmap(bmp);
     const blob = await new Promise((res) => canvas.toBlob(res));
-    const buffer = Buffer.from(await blob.arrayBuffer());
+    const buffer = Buffer.from(await (blob as any).arrayBuffer());
     await this.callback(buffer);
   }
 }
