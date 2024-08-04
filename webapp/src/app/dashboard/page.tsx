@@ -9,7 +9,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { useState } from 'react';
 
 export default function Home() {
-  const interval = 20000;
+  const interval = 10000;
 
   const [nodes, setNodes] = useState<React.ReactNode[]>([]);
   const [state, setState] = useState<'inactive' | 'active' | 'loading'>('inactive');
@@ -26,7 +26,10 @@ export default function Home() {
       setNodes(await Promise.all(['music','art'].flatMap((t) => update(passage, t as IntegrationType))));
       setState('active');
     },
-    async () => setState('inactive'),
+    async () => {
+      setState('inactive');
+      setNodes([]);
+    },
   );
 
   const handleClick = async () => {
