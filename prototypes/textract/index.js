@@ -37,7 +37,8 @@ const displayBlockInfo = async (response) => {
             }
         });
         textString = textBlock.join(" ");
-        console.log(textString);
+        console.log("TEXT STRING = ?", textString);
+        // console.log(textString);
       } catch (err) {
         console.log("Error", err);
       }
