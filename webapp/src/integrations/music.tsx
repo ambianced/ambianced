@@ -35,7 +35,7 @@ export class SpotifyIntegration implements Integration {
     // play the song
     // create the cardx 
     // TODO: return a card for the image
-    return        <Spotify className='w-1/2' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
+    return        <Spotify className='w-full' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
   }
 }
 
