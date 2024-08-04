@@ -46,7 +46,7 @@ export default function Home() {
       <section className="w-full py-20 gap-10 flex flex-col justify-center items-center">
         {state == 'inactive' && (
           <div className="w-full justify-center flex pt-10">
-            <Button className="md:w-1/3" onClick={handleClick}>Start Reading</Button>
+            <Button className="px-16" onClick={handleClick}>Start Reading</Button>
           </div>
         )}
         {state == 'loading' && nodes.length <= 0 && (
