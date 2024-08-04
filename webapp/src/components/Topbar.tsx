@@ -15,7 +15,6 @@ import { useState } from "react";
 
 import { ActivityIcon, BookOpen, Menu } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
-import { ModeToggle } from "./ui/mode-toggle";
 import Link from "next/link";
 
 import UserDropdown from "./UserDropdown";
@@ -45,8 +44,6 @@ export default function Topbar() {
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
@@ -108,8 +105,6 @@ export default function Topbar() {
               </a>
             )}
             {/* <AvatarDropDown/> */}
-
-            <ModeToggle />
           </div>
         </NavigationMenuList>
       </NavigationMenu>
