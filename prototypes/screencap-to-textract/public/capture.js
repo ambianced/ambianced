@@ -31,7 +31,6 @@ let mediaRecorder;
 
 async function startCapture() {
   logElem.textContent = "";
-  console.log("JAidjiwjidwjidwij");
 
   try {
     mediaStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
@@ -39,9 +38,7 @@ async function startCapture() {
 
     mediaRecorder = new MediaRecorder(mediaStream, mediaRecordingOptions);
     mediaRecorder.ondataavailable = handleDataAvailable;
-    console.log("dj");
     mediaRecorder.start();
-    console.log("joudat qt");
     setTimeout(() => takePhoto(mediaStream), 1000);
 
     dumpOptionsInfo();
@@ -80,12 +77,14 @@ async function bitmapToImage(bmp) {
   const ctx = canvas.getContext('bitmaprenderer');
   ctx.transferFromImageBitmap(bmp);
   
+  // Set up image blob to send to server for textract
   const blob = await new Promise((res) => canvas.toBlob(res));
   console.log(blob); // Blob
 
   const formData = new FormData();
   formData.append('image', blob, 'image.png');
 
+  // send the POST request
   try {
     const response = await fetch('/upload-image', {
       method: 'POST',
