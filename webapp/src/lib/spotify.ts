@@ -1,9 +1,10 @@
+"use server";
 import { playing_schema } from "@/schemas/spotify";
 import { token_schema } from "@/schemas/spotify";
 
 const refresh_token = "AQD14wrEBSUuwrO8CDos88dOw7ZNakQm3UVv3TIOz-ry6vME42EMI2RR6KpF2C4xnEwayIBJAndG5WyRwmvIB6v9QJDHq6BN6jWLQIo2YsKwMioFfwptLRiEZnSEjanw7X8"
-const client_id = "e774a163cc3d4758968e88af921c8f8b"
-const client_secret = "50deffbb345c449c897e0da0e3f83a71"
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 const getRefreshToken = async () => {
   // call /api/spotify/login
@@ -44,8 +45,6 @@ export const getAccessToken = async () => {
   const res_data = await response.json();
   const token_data = token_schema.parse(res_data);
 
-  console.log("TOKEN DATA")
-
   return token_data.access_token;
 };
 
@@ -78,8 +77,6 @@ export const getCurrentlyPlayingFetcher = async (token: string) => {
 
 export const getPlayback = async (token: string) => {
 
-  console.log(`theee token = ${token}`)
-
   const playingOptions = {
     url: "https://api.spotify.com/v1/me/player/play",
     headers: {
@@ -104,7 +101,7 @@ export const getPlayback = async (token: string) => {
     }),
   });
 
-  console.log("REARKDLSAJFLKDSAJFKLDASJFKSDAJ ")
+  console.log("response, ", response)
   // if (response.status !== 200) {
   //   return response.status;
   // }
