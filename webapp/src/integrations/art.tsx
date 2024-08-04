@@ -27,7 +27,7 @@ export class DallE3Integration implements Integration {
     }
     return (
       <Card>
-        <CardContent className="flex flex-col justify-center" >
+        <CardContent className="flex flex-col justify-center items-center p-4" >
           <img src={url} alt="depiction of the passage" className="rounded-md" />
         </CardContent>
       </Card>
