@@ -39,7 +39,7 @@ export default function Home() {
           <BookOpen size={256} />
         </div>
         <div className="w-full justify-center flex">
-          <Button className="w- md:w-1/3" onClick={handleClick}>Get Started</Button>
+          <Button className="md:w-1/3" onClick={handleClick}>Get Started</Button>
         </div>
         <div>
           {nodes}
