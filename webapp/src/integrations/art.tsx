@@ -1,6 +1,7 @@
 import type OpenAI from 'openai';
 
 import { Integration, IntegrationContext } from './framework';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 
 export class DallE3Integration implements Integration {
@@ -24,8 +25,13 @@ export class DallE3Integration implements Integration {
     if (!url) {
       throw Error('openai api did not return exactly one image url');
     }
-    // TODO: return a card for the image
-    return <img src={url}/>
+    return (
+      <Card className="p-4 w-fit">
+        <CardContent className="flex flex-col justify-center items-center p-0" >
+          <img src={url} alt="depiction of the passage" className="rounded-md container p-0" />
+        </CardContent>
+      </Card>
+    )
   }
 }
 

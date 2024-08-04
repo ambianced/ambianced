@@ -5,10 +5,12 @@ export class Capture {
   private delay: number;
   private intervalHandle?: NodeJS.Timeout;
   private callback: (buffer: Buffer) => Promise<void>;
+  private onStop: () => Promise<void>;
 
-  constructor(delay: number, callback: (buffer: Buffer) => Promise<void>) {
+  constructor(delay: number, callback: (buffer: Buffer) => Promise<void>, onStop: () => Promise<void>) {
     this.delay = delay;
     this.callback = callback;
+    this.onStop = onStop;
     this.streamOptions = {
       video: {
         displaySurface: "window",
@@ -24,15 +26,16 @@ export class Capture {
       throw Error('expected exactly one video track in stream');
     }
     this.capturer = new ImageCapture(track);
+    await this.capture();
     this.intervalHandle = setInterval(async () => await this.capture(), this.delay);
   }
 
   async stop() {
-
     clearInterval(this.intervalHandle);
     this.intervalHandle = undefined;
     this.capturer = undefined;
     this.stream = undefined;
+    await this.onStop();
   }
 
   private async capture() {
