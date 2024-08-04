@@ -109,7 +109,6 @@ export const getPlayback = async (token: string) => {
 
 
 export const  getPlayback1 = async (token: string, track: string, songPosition: number) => {
-  console.log("TRACK: ", track)
   const playingOptions = {
     url: "https://api.spotify.com/v1/me/player/play",
     headers: {
@@ -139,7 +138,6 @@ export const  getPlayback1 = async (token: string, track: string, songPosition: 
   if (!response.ok) {
     throw new Error(`Error: ${response.status}`);
   }
-  // console.log("RESPONSE, ", response)
 
   const res_data = await response.json();
   return res_data;

@@ -54,7 +54,6 @@ export default function Home() {
   const handleClick = async () => {
     await capture.start();
     const token = await getAccessToken();
-    console.log(token);
     if (!token) {
       return;
     }
@@ -63,12 +62,9 @@ export default function Home() {
     const randomIndex = Math.floor(Math.random() * bookThemesAndSong.length);
     const [theme, songUri] = bookThemesAndSong[randomIndex];
 
-    console.log(`Selected theme: ${theme}`);
-    console.log(`Song URI: ${songUri}`);
 
     try {
       const data1 = await getPlayback1(token, songUri, 0);
-      console.log(data1);
     } catch (error) {
       console.error('Error during playback:', error);
     }
