@@ -4,9 +4,9 @@ export class Capture {
   private streamOptions: DisplayMediaStreamOptions;
   private delay: number;
   private intervalHandle?: NodeJS.Timeout;
-  private callback: (buffer: Buffer) => void;
+  private callback: (buffer: Buffer) => Promise<void>;
 
-  constructor(delay: number, callback: (buffer: Buffer) => void) {
+  constructor(delay: number, callback: (buffer: Buffer) => Promise<void>) {
     this.delay = delay;
     this.callback = callback;
     this.streamOptions = {
@@ -29,11 +29,15 @@ export class Capture {
 
   async stop() {
     clearInterval(this.intervalHandle);
+    this.intervalHandle = undefined;
+    this.capturer = undefined;
+    this.stream = undefined;
   }
 
   private async capture() {
-    if (!this.capturer) {
-      throw Error('capturer must be defined');
+    if (!this.stream || !this.stream.active || !this.capturer) {
+      this.stop();
+      return;
     }
     const bmp = await this.capturer.grabFrame();
     const canvas = document.createElement('canvas');
@@ -46,7 +50,7 @@ export class Capture {
     ctx.transferFromImageBitmap(bmp);
     const blob = await new Promise((res) => canvas.toBlob(res));
     const buffer = Buffer.from(await blob.arrayBuffer());
-    this.callback(buffer);
+    await this.callback(buffer);
   }
 }
 

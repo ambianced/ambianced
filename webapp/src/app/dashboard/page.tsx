@@ -5,13 +5,17 @@ import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import { getAccessToken, getPlayback } from "@/lib/spotify";
 import { Capture } from "@/core/capture";
+import { imageToText } from "@/actions";
 
 
 export default function Home({ delay = 5000 }: { delay: number }) {
   const capture = new Capture(
     delay,
-    // TODO: send buffer to textract
-    (buff) => console.log('received buffer'),
+    async (buffer) => {
+      const formData = new FormData();
+      formData.append("blob", new Blob([buffer]))
+      const text = await imageToText(formData);
+    }
   );
 
   const handleClick = async () => {
