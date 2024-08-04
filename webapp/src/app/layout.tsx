@@ -23,7 +23,7 @@ export default async function RootLayout({
       <html lang="en">
         <UserProvider>
         <body className={`max-h-screen ${inter.className}`}>
-          <ThemeProvider
+          <ThemeProvider  
             attribute="class"
             defaultTheme="system"
             enableSystem
