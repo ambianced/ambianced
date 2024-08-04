@@ -26,16 +26,16 @@ interface RouteProps {
   label: string;
 }
 
-// const routeList: RouteProps[] = [
-//   {
-//     href: "/dashboard",
-//     label: "Dashboard",
-//   },
-//   {
-//     href: "/about",
-//     label: "About",
-//   },
-// ];
+const routeList: RouteProps[] = [
+  {
+    href: "/dashboard",
+    label: "Dashboard",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+];
 
 export default function Topbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
