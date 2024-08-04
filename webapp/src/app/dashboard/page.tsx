@@ -4,11 +4,10 @@ import { useState } from 'react';
 import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
-import { getAccessToken, getPlayback } from "@/lib/spotify";
+import { getAccessToken, getPlayback, getPlayback1 } from "@/lib/spotify";
 import { Capture } from "@/core/capture";
 import { imageToText, update, IntegrationType } from "@/actions";
 
-import { getAccessToken, getPlayback, getPlayback1 } from "@/lib/spotify";
 import { IntegrationCard } from "@/components/integration-card";
 import { bookThemesAndSong } from "@/lib/const";
 
