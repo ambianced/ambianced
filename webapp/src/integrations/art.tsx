@@ -26,9 +26,9 @@ export class DallE3Integration implements Integration {
       throw Error('openai api did not return exactly one image url');
     }
     return (
-      <Card>
-        <CardContent className="flex flex-col justify-center items-center p-4" >
-          <img src={url} alt="depiction of the passage" className="rounded-md" />
+      <Card className="p-4 w-fit">
+        <CardContent className="flex flex-col justify-center items-center p-0" >
+          <img src={url} alt="depiction of the passage" className="rounded-md container p-0" />
         </CardContent>
       </Card>
     )
