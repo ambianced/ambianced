@@ -108,7 +108,8 @@ export const getPlayback = async (token: string) => {
 };
 
 
-export const getPlayback1 = async (token: string, albumId: string, songPosition: number) => {
+export const  getPlayback1 = async (token: string, track: string, songPosition: number) => {
+  console.log("TRACK: ", track)
   const playingOptions = {
     url: "https://api.spotify.com/v1/me/player/play",
     headers: {
@@ -116,24 +117,7 @@ export const getPlayback1 = async (token: string, albumId: string, songPosition:
     },
   };
 
-  const album = "spotify:album" + albumId;
 
-  // Log if these two JSON strings are the same
-  console.log(JSON.stringify({
-    "context_uri": albumId,
-    "offset": {
-        "position": songPosition
-    },
-    "position_ms": 0
-  }) === JSON.stringify({
-    "context_uri": "spotify:album:0j4PaZDmzAJ4PlS89zcHbW?si=LKXoH9obS7adnmGgc9yrBw",
- "offset": {
-     "position": 0
- },
- "position_ms": 0
- }),);
-
- const track = "4iV5W9uYEdYUVa79Axb7Rh"
 
   const response = await fetch(playingOptions.url, {
     method: "put",
@@ -141,7 +125,7 @@ export const getPlayback1 = async (token: string, albumId: string, songPosition:
     next: { revalidate: 30 },
     body: JSON.stringify({
       "uris": [`spotify:track:${track}`],
-      "position_ms": 0
+      "position_ms": 20000
     }),
     // body: JSON.stringify({
     //    "context_uri": "spotify:album:0j4PaZDmzAJ4PlS89zcHbW?si=LKXoH9obS7adnmGgc9yrBw",
@@ -155,7 +139,7 @@ export const getPlayback1 = async (token: string, albumId: string, songPosition:
   if (!response.ok) {
     throw new Error(`Error: ${response.status}`);
   }
-  console.log("RESPONSE, ", response)
+  // console.log("RESPONSE, ", response)
 
   const res_data = await response.json();
   return res_data;
