@@ -9,9 +9,7 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 
 export const getAccessToken = async () => {
-  console.log("GET ACCESS TOKEN")
   if (!(refresh_token && client_secret && client_id)) {
-    console.log("NO REFRESH")
     return null;
   }
   const authOptions = {
@@ -56,7 +54,6 @@ export const getCurrentlyPlayingFetcher = async (token: string) => {
     next: { revalidate: 30 },
   });
 
-  console.log("REARKDLSAJFLKDSAJFKLDASJFKSDAJ ")
   if (response.status !== 200) {
     return response.status;
   }
@@ -94,7 +91,6 @@ export const getPlayback = async (token: string) => {
     }),
   });
 
-  console.log("response, ", response)
   // if (response.status !== 200) {
   //   return response.status;
   // }
@@ -102,7 +98,6 @@ export const getPlayback = async (token: string) => {
   let playing_data = null;
   const res_data = await response.json();
   // playing_data = playing_schema.parse(res_data);
-  console.log('res data', res_data);
 
 
   return res_data;

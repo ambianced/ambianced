@@ -13,7 +13,6 @@ export default function Home() {
       return;
     }
     const data = await getPlayback(token);
-    console.log(data);
   };
 
   return (

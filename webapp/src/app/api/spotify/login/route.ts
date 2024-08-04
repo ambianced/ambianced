@@ -17,7 +17,6 @@ export async function GET() {
     state: state,
   });
 
-  console.log(redirect_uri);
   
 
   return NextResponse.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);  
