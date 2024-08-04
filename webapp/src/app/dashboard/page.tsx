@@ -4,15 +4,18 @@ import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import { getAccessToken, getPlayback } from "@/lib/spotify";
+import { Capture } from "@/core/capture";
 
 
-export default function Home() {
+export default function Home({ delay = 5000 }: { delay: number }) {
+  const capture = new Capture(
+    delay,
+    // TODO: send buffer to textract
+    (buff) => console.log('received buffer'),
+  );
+
   const handleClick = async () => {
-    const token = await getAccessToken();
-    if (!token) {
-      return;
-    }
-    const data = await getPlayback(token);
+    await capture.start();
   };
 
   return (

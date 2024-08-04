@@ -1,4 +1,4 @@
-class Capture {
+export class Capture {
   private stream?: MediaStream;
   private capturer?: ImageCapture;
   private streamOptions: DisplayMediaStreamOptions;
@@ -24,7 +24,7 @@ class Capture {
       throw Error('expected exactly one video track in stream');
     }
     this.capturer = new ImageCapture(track);
-    this.intervalHandle = setInterval(this.capture, this.delay);
+    this.intervalHandle = setInterval(async () => await this.capture(), this.delay);
   }
 
   async stop() {
