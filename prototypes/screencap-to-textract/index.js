@@ -37,15 +37,15 @@ const displayBlockInfo = async (response) => {
             }
         });
         textString = textBlock.join(" ");
-        console.log("TEXT STRING = ?", textString);
-        // console.log(textString);
+        console.log(textString);
       } catch (err) {
         console.log("Error", err);
       }
 }
 
-const analyze_document_text = async () => {
+const analyze_document_text = async (imageData: Buffer) => {
     try {
+        // const params = <create the params using the image data>;
         const analyzeDoc = new AnalyzeDocumentCommand(params);
         const response = await textractClient.send(analyzeDoc);
         //console.log(response)
