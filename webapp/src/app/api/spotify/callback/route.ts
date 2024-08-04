@@ -45,7 +45,6 @@ export async function GET(request: NextRequest) {
     }
 
     const resData = await response.json();
-    console.log(resData.refresh_token);
 
     return NextResponse.json(resData);
   } catch (error) {

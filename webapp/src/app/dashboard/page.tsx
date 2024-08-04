@@ -9,10 +9,10 @@ import { getAccessToken, getPlayback } from "@/lib/spotify";
 export default function Home() {
   const handleClick = async () => {
     const token = await getAccessToken();
-    console.log("TOKEEEEEN")
-    console.log(token)
+    if (!token) {
+      return;
+    }
     const data = await getPlayback(token);
-    console.log("ciao")
     console.log(data);
   };
 
