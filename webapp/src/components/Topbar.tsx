@@ -26,16 +26,7 @@ interface RouteProps {
   label: string;
 }
 
-const routeList: RouteProps[] = [
-  {
-    href: "/dashboard",
-    label: "Dashboard",
-  },
-  {
-    href: "/about",
-    label: "About",
-  },
-];
+
 
 export default function Topbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -73,16 +64,7 @@ export default function Topbar() {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
-                    <Link
-                      key={label}
-                      href={href}
-                      onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
-                    >
-                      {label}
-                    </Link>
-                  ))}
+                
                   {user ? (
                     <div className="flex gap-4 items-center">
                       <p className="text-muted-foreground">
@@ -107,17 +89,7 @@ export default function Topbar() {
 
           {/* desktop */}
           <nav className="hidden md:flex gap-2">
-            {routeList.map((route: RouteProps, i) => (
-              <Link
-                href={route.href}
-                key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
-              >
-                {route.label}
-              </Link>
-            ))}
+           
           </nav>
 
           <div className="hidden md:flex gap-2">

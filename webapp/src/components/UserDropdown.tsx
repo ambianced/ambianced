@@ -50,9 +50,6 @@ export default function UserDropdown({
         </div>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuSeparator />
         <Link href="/api/auth/logout" className="cursor-pointer">
           <DropdownMenuItem className="cursor-pointer">
             Sign out
