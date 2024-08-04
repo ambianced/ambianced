@@ -12,6 +12,9 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   const state = searchParams.get('state');
 
+  console.log('called');
+  
+
   if (!state) {
     return NextResponse.redirect(`/#${querystring.stringify({ error: 'state_mismatch' })}`);
   }

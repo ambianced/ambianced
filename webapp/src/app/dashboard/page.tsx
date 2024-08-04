@@ -3,7 +3,7 @@
 import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
-import { getAccessToken, getCurrentlyPlayingFetcher } from "@/lib/spotify";
+import { getAccessToken, getPlayback } from "@/lib/spotify";
 
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
     const token = await getAccessToken();
     console.log("TOKEEEEEN")
     console.log(token)
-    const data = await getCurrentlyPlayingFetcher(token);
+    const data = await getPlayback(token);
     console.log("ciao")
     console.log(data);
   };

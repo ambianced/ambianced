@@ -7,7 +7,7 @@ const redirect_uri = process.env.SPOTIFY_REDIRECT_URI!;
 
 export async function GET() {
   const state = crypto.randomBytes(16).toString('hex');
-  const scope = 'user-read-currently-playing user-read-playback-state user-read-recently-played';
+  const scope = 'user-read-currently-playing user-read-playback-state user-read-recently-played user-modify-playback-state';
 
   const queryParams = querystring.stringify({
     response_type: 'code',
@@ -16,6 +16,9 @@ export async function GET() {
     redirect_uri: redirect_uri,
     state: state,
   });
+
+  console.log(redirect_uri);
+  
 
   return NextResponse.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 }

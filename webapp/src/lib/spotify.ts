@@ -1,9 +1,9 @@
 import { playing_schema } from "@/schemas/spotify";
 import { token_schema } from "@/schemas/spotify";
 
-const refresh_token = "AQBzjNGxQaJWm4VvkLzTfKOaoCZCj5SJsbJ0Zz-hjxslnP4q3BTsSwuKMhNRC603nRvV5BdLF2qiHh1djeD03Da6I0dson5oAP0o5PKaxGJD72DK5fUo9JQBJtgpA-U6qOA"
-const client_id = "5ce5ca171e0643f59949b9061943bd1e"
-const client_secret ="3326ddb36e54439a805c377b31fd17f2"
+const refresh_token = "AQD14wrEBSUuwrO8CDos88dOw7ZNakQm3UVv3TIOz-ry6vME42EMI2RR6KpF2C4xnEwayIBJAndG5WyRwmvIB6v9QJDHq6BN6jWLQIo2YsKwMioFfwptLRiEZnSEjanw7X8"
+const client_id = "e774a163cc3d4758968e88af921c8f8b"
+const client_secret = "50deffbb345c449c897e0da0e3f83a71"
 
 const getRefreshToken = async () => {
   // call /api/spotify/login
@@ -14,7 +14,7 @@ const getRefreshToken = async () => {
 }
 
 
-export  const getAccessToken = async () => {
+export const getAccessToken = async () => {
   console.log("GET ACCESS TOKEN")
   if (!(refresh_token && client_secret && client_id)) {
     console.log("NO REFRESH")
@@ -74,4 +74,46 @@ export const getCurrentlyPlayingFetcher = async (token: string) => {
   playing_data = playing_schema.parse(res_data);
 
   return playing_data;
+};
+
+export const getPlayback = async (token: string) => {
+
+  console.log(`theee token = ${token}`)
+
+  const playingOptions = {
+    url: "https://api.spotify.com/v1/me/player/play",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+    "offset": {
+        "position": 5
+    },
+    "position_ms": 0
+  };
+  const response = await fetch(playingOptions.url, {
+    method: "put",
+    headers: playingOptions.headers,
+    next: { revalidate: 30 },
+    body: JSON.stringify({
+      "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+      "offset": {
+          "position": 5
+      },
+      "position_ms": 0
+    }),
+  });
+
+  console.log("REARKDLSAJFLKDSAJFKLDASJFKSDAJ ")
+  // if (response.status !== 200) {
+  //   return response.status;
+  // }
+
+  let playing_data = null;
+  const res_data = await response.json();
+  // playing_data = playing_schema.parse(res_data);
+  console.log('res data', res_data);
+
+
+  return res_data;
 };
