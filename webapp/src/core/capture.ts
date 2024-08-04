@@ -36,7 +36,7 @@ export class Capture {
 
   private async capture() {
     if (!this.stream || !this.stream.active || !this.capturer) {
-      this.stop();
+      await this.stop();
       return;
     }
     const bmp = await this.capturer.grabFrame();

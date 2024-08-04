@@ -1,20 +1,24 @@
 "use client";
 
+import { useState } from 'react';
 import Topbar from "@/components/Topbar";
 import { Button } from "@/components/ui/button";
 import { BookOpen } from "lucide-react";
 import { getAccessToken, getPlayback } from "@/lib/spotify";
 import { Capture } from "@/core/capture";
-import { imageToText } from "@/actions";
+import { imageToText, update } from "@/actions";
 
 
 export default function Home({ delay = 5000 }: { delay: number }) {
+  const [nodes, setNodes] = useState([]);
+
   const capture = new Capture(
     delay,
     async (buffer) => {
       const formData = new FormData();
       formData.append("blob", new Blob([buffer]))
-      const text = await imageToText(formData);
+      const passage = await imageToText(formData);
+      setNodes(await Promise.all(['art'].flatMap((t) => update(passage, t))));
     }
   );
 
@@ -34,6 +38,9 @@ export default function Home({ delay = 5000 }: { delay: number }) {
         </div>
         <div className="w-full justify-center flex">
           <Button className="w- md:w-1/3" onClick={handleClick}>Get Started</Button>
+        </div>
+        <div>
+          {nodes}
         </div>
       </section>
     </>

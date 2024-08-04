@@ -25,7 +25,7 @@ export class DallE3Integration implements Integration {
       throw Error('openai api did not return exactly one image url');
     }
     // TODO: return a card for the image
-    return null;
+    return <img src={url}/>
   }
 }
 
