@@ -17,10 +17,11 @@ export class SpotifyIntegration implements Integration {
       bookThemesAndSong.map((theme) => theme[0])
     )
     console.log("THEME", theme)
+    
     const songId = bookThemesAndSong.find((themeAndSong) => themeAndSong[0] === theme)?.[1];
     console.log("SONGID", songId)
     if (!songId) {
-      throw Error('no song found for theme');
+      return null;
     }
 
     const token = await getAccessToken();
