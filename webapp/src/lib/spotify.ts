@@ -136,7 +136,7 @@ export const getPlayback = async (token: string, track: string, songPosition: nu
   });
 
   if (!response.ok) {
-    return null;
+    throw new Error(`Error: ${response.status}`);
   }
 
   const res_data = await response.json();

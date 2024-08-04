@@ -32,6 +32,7 @@ export default function Home() {
     }
     setStarted(true);
   };
+  
 
   return (
     <>
