@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Capture } from "@/core/capture";
 import { getAccessToken } from "@/lib/spotify";
 import { BookOpen } from "lucide-react";
+import Image from "next/image";
 import { useState } from 'react';
 
 export default function Home() {
@@ -44,7 +45,7 @@ export default function Home() {
               <h1 className="font-bold text-4xl">Dashboard</h1>
             </div>
             <div className="w-full flex justify-center">
-              <BookOpen size={256} />
+             {/* <Image src='/logo.jpg' alt="logo" width={256} height={256}/> */}
             </div>
             <div className="w-full justify-center flex">
               <Button className="md:w-1/3" onClick={handleClick}>Get Started</Button>

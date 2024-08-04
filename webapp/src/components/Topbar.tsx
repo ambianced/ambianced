@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { useState } from "react";
 
-import { ActivityIcon, Menu } from "lucide-react";
+import { ActivityIcon, BookOpen, Menu } from "lucide-react";
 import { Button, buttonVariants } from "./ui/button";
 import { ModeToggle } from "./ui/mode-toggle";
 import Link from "next/link";
@@ -38,7 +38,7 @@ export default function Topbar() {
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
             <Link href="/" className="ml-2 font-bold text-xl flex gap-5">
-              <ActivityIcon />
+             <BookOpen/>
               Ambianced
             </Link>
           </NavigationMenuItem>
@@ -77,7 +77,6 @@ export default function Topbar() {
                       <Button
                         className={`border ${buttonVariants({ variant: "secondary" })}`}
                       >
-                        <ActivityIcon className="mr-2 w-5 h-5" />
                         Sign-In
                       </Button>
                     </a>
@@ -104,7 +103,6 @@ export default function Topbar() {
                 <Button
                   className={`border ${buttonVariants({ variant: "secondary" })}`}
                 >
-                  <ActivityIcon className="mr-2 w-5 h-5" />
                   Sign-In
                 </Button>
               </a>
