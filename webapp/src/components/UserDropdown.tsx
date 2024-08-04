@@ -36,7 +36,7 @@ export default function UserDropdown({
             {/* {session.data && <p className="font-medium">{JSON.stringify(session.data.user)}</p>} */}
             <p className="font-medium">{user.name}</p>
             {/* {user.id} */}
-{/* 
+            {/* 
             <div>
               <Badge>
                 {user.role ?? capitalize(user.role ?? "")}

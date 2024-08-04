@@ -31,9 +31,9 @@ export const Hero = () => {
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
           {/* TODO: Implement a dialog to ask "are you a nurse?" or "are you a patient?" */}
-          <Link href="/auth/login">
+          <a href="/api/auth/login">
             <Button className="w-full md:w-1/3">Get Started</Button>
-          </Link>
+          </a>
           <Link
             href="https://github.com/ambianced/ambianced/tree/feat-screen-capture"
             target="_blank"

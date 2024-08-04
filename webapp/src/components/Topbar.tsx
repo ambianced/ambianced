@@ -91,14 +91,14 @@ export default function Topbar() {
                       <UserDropdown {...{ user }} />
                     </div>
                   ) : (
-                    <Link href="/auth/login" passHref>
+                    <a href="/api/auth/login">
                       <Button
                         className={`border ${buttonVariants({ variant: "secondary" })}`}
                       >
                         <ActivityIcon className="mr-2 w-5 h-5" />
                         Sign-In
                       </Button>
-                    </Link>
+                    </a>
                   )}
                 </nav>
               </SheetContent>
@@ -128,14 +128,14 @@ export default function Topbar() {
                 <UserDropdown {...{ user }} />
               </div>
             ) : (
-              <Link href="/auth/login" passHref>
+              <a href="/api/auth/login">
                 <Button
                   className={`border ${buttonVariants({ variant: "secondary" })}`}
                 >
                   <ActivityIcon className="mr-2 w-5 h-5" />
                   Sign-In
                 </Button>
-              </Link>
+              </a>
             )}
             {/* <AvatarDropDown/> */}
 
