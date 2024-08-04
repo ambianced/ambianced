@@ -39,7 +39,7 @@ export class SpotifyIntegration implements Integration {
     // play the song
     // create the cardx 
     // TODO: return a card for the image
-    return <img src={url} />
+    return<div>{theme}</div>
   }
 }
 
