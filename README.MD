@@ -1,3 +1,7 @@
+# Ambianced
+
+Ambiance for reading.
+
 ## 💡 Inspiration 
 With the continuous evolution of technology, media consumption has become increasingly immersive - except for books. Despite advancements in other forms of entertainment, reading remains a solitary and unchanged experience. What if you could be transported into the world of the book you’re reading? This question inspired us to create Ambianced.
 
