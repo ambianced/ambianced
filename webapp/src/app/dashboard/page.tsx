@@ -74,8 +74,6 @@ export default function Home() {
         <div>
           {nodes}
         </div>
-        ciao
-
       </section>
     </>
   );

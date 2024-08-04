@@ -18,6 +18,7 @@ export class SpotifyIntegration implements Integration {
     )
     console.log("THEME", theme)
     const songId = bookThemesAndSong.find((themeAndSong) => themeAndSong[0] === theme)?.[1];
+    console.log("SONGID", songId)
     if (!songId) {
       throw Error('no song found for theme');
     }
@@ -40,7 +41,7 @@ export class SpotifyIntegration implements Integration {
     // play the song
     // create the cardx 
     // TODO: return a card for the image
-    return        <Spotify wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
+    return        <Spotify className='w-1/2' wide link={`https://open.spotify.com/track/${songId}?si=4472348a63dd4f83`} />
   }
 }
 
