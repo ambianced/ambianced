@@ -4,58 +4,58 @@
 
 @layer base {
   :root {
-    --background: 210 20% 97%; /* Light pastel background */
-    --foreground: 210 20% 10%; /* Darker pastel text */
-    --card: 210 30% 95%; /* Very light pastel for cards */
-    --card-foreground: 210 20% 10%; /* Darker pastel for card text */
-    --popover: 210 30% 95%; /* Same as card */
-    --popover-foreground: 210 20% 10%; /* Same as card foreground */
-    --primary: 210 20% 85%; /* Soft pastel primary color */
-    --primary-foreground: 210 20% 10%; /* Darker pastel for primary text */
-    --secondary: 210 20% 90%; /* Light pastel secondary color */
-    --secondary-foreground: 210 20% 10%; /* Darker pastel for secondary text */
-    --muted: 210 20% 90%; /* Even lighter pastel muted color */
-    --muted-foreground: 210 20% 30%; /* Dark pastel muted text */
-    --accent: 210 20% 85%; /* Soft pastel accent color */
-    --accent-foreground: 210 20% 10%; /* Darker pastel for accent text */
-    --destructive: 0 10% 85%; /* Very light pink for destructive actions */
-    --destructive-foreground: 210 20% 10%; /* Dark pastel for destructive text */
-    --border: 210 20% 90%; /* Light pastel border */
-    --input: 210 20% 90%; /* Light pastel input background */
-    --ring: 210 20% 85%; /* Pastel ring */
+    --background: 120 20% 95%; /* Soft, warm pastel green */
+    --foreground: 120 15% 30%; /* Deep, muted green */
+    --card: 120 20% 90%; /* Gentle pastel green */
+    --card-foreground: 120 15% 35%; /* Deep, muted green */
+    --popover: 120 20% 85%; /* Gentle pastel green */
+    --popover-foreground: 120 15% 35%; /* Deep, muted green */
+    --primary: 120 25% 70%; /* Cozy, muted pastel green */
+    --primary-foreground: 120 15% 25%; /* Deep, muted green */
+    --secondary: 120 25% 80%; /* Soft pastel green */
+    --secondary-foreground: 120 15% 35%; /* Deep, muted green */
+    --muted: 120 25% 85%; /* Gentle pastel green */
+    --muted-foreground: 120 20% 40%; /* Medium green */
+    --accent: 120 25% 75%; /* Soft pastel green */
+    --accent-foreground: 120 15% 30%; /* Deep, muted green */
+    --destructive: 120 40% 50%; /* Warm pastel green */
+    --destructive-foreground: 120 25% 85%; /* Soft pastel green */
+    --border: 120 25% 70%; /* Gentle pastel green */
+    --input: 120 25% 70%; /* Gentle pastel green */
+    --ring: 120 20% 40%; /* Deep, muted green */
     --radius: 0.5rem;
-    --chart-1: 200 30% 80%; /* Light pastel chart color */
-    --chart-2: 150 30% 80%; /* Light pastel chart color */
-    --chart-3: 40 30% 80%; /* Light pastel chart color */
-    --chart-4: 280 30% 80%; /* Light pastel chart color */
-    --chart-5: 340 30% 80%; /* Light pastel chart color */
+    --chart-1: 120 30% 60%; /* Cozy pastel green */
+    --chart-2: 120 30% 50%; /* Slightly darker pastel green */
+    --chart-3: 120 25% 40%; /* Medium pastel green */
+    --chart-4: 120 30% 65%; /* Soft pastel green */
+    --chart-5: 120 35% 55%; /* Medium light pastel green */
   }
 
   .dark {
-    --background: 210 10% 20%; /* Dark pastel background */
-    --foreground: 210 10% 90%; /* Light pastel text */
-    --card: 210 10% 20%; /* Dark pastel card */
-    --card-foreground: 210 10% 90%; /* Light pastel for card text */
-    --popover: 210 10% 20%; /* Same as card */
-    --popover-foreground: 210 10% 90%; /* Same as card text */
-    --primary: 210 10% 30%; /* Dark pastel primary color */
-    --primary-foreground: 210 10% 90%; /* Light pastel for primary text */
-    --secondary: 210 10% 40%; /* Dark pastel secondary color */
-    --secondary-foreground: 210 10% 90%; /* Light pastel for secondary text */
-    --muted: 210 10% 40%; /* Dark pastel muted color */
-    --muted-foreground: 210 10% 70%; /* Light pastel muted text */
-    --accent: 210 10% 40%; /* Dark pastel accent color */
-    --accent-foreground: 210 10% 90%; /* Light pastel for accent text */
-    --destructive: 0 20% 60%; /* Light pink for destructive actions */
-    --destructive-foreground: 210 10% 90%; /* Light pastel for destructive text */
-    --border: 210 10% 30%; /* Dark pastel border */
-    --input: 210 10% 30%; /* Dark pastel input background */
-    --ring: 210 10% 70%; /* Pastel ring */
-    --chart-1: 200 20% 60%; /* Soft pastel chart color */
-    --chart-2: 150 20% 60%; /* Soft pastel chart color */
-    --chart-3: 40 20% 60%; /* Soft pastel chart color */
-    --chart-4: 280 20% 60%; /* Soft pastel chart color */
-    --chart-5: 340 20% 60%; /* Soft pastel chart color */
+    --background: 120 30% 10%; /* Dark green */
+    --foreground: 120 30% 90%; /* Very light pastel green */
+    --card: 120 30% 15%; /* Dark green */
+    --card-foreground: 120 30% 90%; /* Very light pastel green */
+    --popover: 120 30% 15%; /* Dark green */
+    --popover-foreground: 120 30% 90%; /* Very light pastel green */
+    --primary: 120 30% 80%; /* Light pastel green */
+    --primary-foreground: 120 50% 20%; /* Dark green */
+    --secondary: 120 30% 20%; /* Dark green */
+    --secondary-foreground: 120 30% 90%; /* Very light pastel green */
+    --muted: 120 30% 20%; /* Dark green */
+    --muted-foreground: 120 30% 60%; /* Medium pastel green */
+    --accent: 120 30% 20%; /* Dark green */
+    --accent-foreground: 120 30% 90%; /* Very light pastel green */
+    --destructive: 120 60% 60%; /* Medium bright pastel green */
+    --destructive-foreground: 120 30% 90%; /* Very light pastel green */
+    --border: 120 30% 20%; /* Dark green */
+    --input: 120 30% 20%; /* Dark green */
+    --ring: 120 30% 80%; /* Light pastel green */
+    --chart-1: 120 60% 65%; /* Medium pastel green */
+    --chart-2: 120 60% 55%; /* Medium pastel green */
+    --chart-3: 120 50% 45%; /* Medium dark pastel green */
+    --chart-4: 120 60% 80%; /* Light pastel green */
+    --chart-5: 120 60% 65%; /* Medium light pastel green */
   }
 }
 
